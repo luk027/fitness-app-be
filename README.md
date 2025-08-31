@@ -1,7 +1,3 @@
-# Fitness App Backend
-### 🚀 Backend service for a fitness tracking application — built with scalability, security, and performance in mind.
-
-
 ## 📦 Sprint / Feature List
 ### Completed
 - Project setup with TypeScript + Express
@@ -31,6 +27,6 @@ chore    →  Build process / config updates
 
 
 ## 👥 Developers
-- [**Luqman**](https://github.com/luk027) 
+- [**Lookman**](https://github.com/luk027) 
 - [**Zayd**](https://github.com/zaydkhatri)  
 

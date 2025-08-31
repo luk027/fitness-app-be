@@ -1,5 +1,5 @@
-import app from "./app";
 import http from "http";
+import app from "@/app";
 import  log from "@/utils/logger";
 import { env } from "@/config/env";
 

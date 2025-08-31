@@ -1,2 +1,2 @@
-export * from "./error";
-export * from "./tryCatch";
+export * from "@/middlewares/error";
+export * from "@/middlewares/tryCatch";

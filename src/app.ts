@@ -3,7 +3,11 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { env } from "@/config/env";
-import { errorMiddleware } from "@/middlewares/index";
+import { errorMiddleware } from "@/middlewares";
+import routes from "@/routes";
+
+import { PrismaClient } from "@/generated/prisma";
+const prisma = new PrismaClient();
 
 const app = express();
 
@@ -16,10 +20,11 @@ app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// API endpoints
 app.get('/', (_, res) => {
   res.send(`Server is running on ${env.NODE_ENV} mode.`);
 })
+
+app.use("/api/v1/auth", routes);
 
 // 404 Fallback
 app.use((_, res) => {
