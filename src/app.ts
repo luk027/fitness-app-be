@@ -2,12 +2,10 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import { env } from "@/config/env";
 import { errorMiddleware } from "@/middlewares";
 import routes from "@/routes";
-
-import { PrismaClient } from "@/generated/prisma";
-const prisma = new PrismaClient();
 
 const app = express();
 
@@ -16,15 +14,16 @@ app.use(helmet({
   crossOriginEmbedderPolicy: env.NODE_ENV !== "DEVELOPMENT",
 }));
 app.use(morgan("dev"));
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get('/', (_, res) => {
-  res.send(`Server is running on ${env.NODE_ENV} mode.`);
+  res.send(`Server is running in ${env.NODE_ENV} environment.`);
 })
 
-app.use("/api/v1/auth", routes);
+app.use("/v1", routes);
 
 // 404 Fallback
 app.use((_, res) => {
